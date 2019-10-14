@@ -1,5 +1,11 @@
+const query = require('./query');
+const owner = require('./owner');
+const question = require('./question');
+
 const resolver = {
-  hello: () => 'hello world'
+  ...query,
+  ...owner,
+  ...question
 };
 
 module.exports = resolver;

@@ -1,12 +1,13 @@
 const stackExchange = require('../services/stackExchange');
 
 class QuestionsController {
-  async index(req, res) {
-    const { tag, score, sort } = req.query;
-    const limit = req.query.limit || Number.MAX_SAFE_INTEGER;
+  async index(args) {
+    const { tag, score, sort } = args;
+    const limit = args.limit || Number.MAX_SAFE_INTEGER;
 
     if (!tag) {
-      return res.status(400).json('missing tag');
+      // return res.status(400).json('missing tag');
+      return 'missing tag';
     }
 
     const params = {
@@ -34,9 +35,10 @@ class QuestionsController {
 
       questions = questions.slice(0, limit);
 
-      return res.json(questions);
+      return questions;
     } catch (error) {
-      return res.status(500).json(error);
+      // return res.status(500).json(error);
+      return error;
     }
   }
 };
