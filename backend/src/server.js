@@ -11,8 +11,7 @@ server.use(cors());
 // server.use(express.json());
 server.use('/', graphqlHTTP({
   schema,
-  rootValue: resolver,
-  graphiql: true
+  rootValue: resolver
 }));
 
 server.listen(3030);

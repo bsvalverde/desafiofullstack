@@ -6,8 +6,7 @@ class QuestionsController {
     const limit = args.limit || Number.MAX_SAFE_INTEGER;
 
     if (!tag) {
-      // return res.status(400).json('missing tag');
-      return 'missing tag';
+      throw new Error('Missing tag');
     }
 
     const params = {
@@ -37,7 +36,6 @@ class QuestionsController {
 
       return questions;
     } catch (error) {
-      // return res.status(500).json(error);
       return error;
     }
   }
