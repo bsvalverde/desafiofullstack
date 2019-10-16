@@ -1,0 +1,36 @@
+.QuestionsSearchBox {
+  width: 100%;
+  background: gainsboro;
+  padding: 1em;
+  box-shadow: 0 2px darkgray;
+  color: dimgray;
+
+  h2 {
+    font-weight: normal;
+    font-style: italic;
+    margin: 0;
+  }
+}
+
+.Row {
+  width: 100%;
+  display: flex;
+  justify-content: stretch;
+  margin: 0.4em 0;
+}
+
+.Input {
+  width: 100%;
+  margin: 0.2em;
+
+  label {
+    display: inline-block;
+    margin: 0.3em 0;
+  }
+}
+
+.Button {
+  width: 12.5%;
+  margin: 0.2em;
+  margin-left: auto;
+}
