@@ -22,7 +22,7 @@ const searchQuestionsFail = (error) => {
   };
 };
 
-export const searchQuestions = () => {
+export const searchQuestions = (args) => {
   return dispatch => {
     dispatch(searchQuestionsStart());
     const params = {
