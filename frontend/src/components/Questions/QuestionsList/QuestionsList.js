@@ -1,12 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../../../store/actions';
-
 const QuestionsList = (props) => {
-  useEffect(() => {
-    props.onPageLoad();
-  }, []);
   if (props.isLoading) {
     return <p>Loading...</p>;
   }
@@ -26,10 +21,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onPageLoad: () => dispatch(actions.searchQuestions())
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(QuestionsList);
+export default connect(mapStateToProps)(QuestionsList);

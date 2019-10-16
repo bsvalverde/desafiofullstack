@@ -23,11 +23,24 @@ const searchQuestionsFail = (error) => {
 };
 
 export const searchQuestions = (args) => {
+  const { tag, limit, score, sort } = args;
+
+  const queryParams = [];
+  queryParams.push(`tag:"${['javascript'].concat(tag).join(';')}"`);
+  if (limit !== '') {
+    queryParams.push(`limit:${limit}`)
+  }
+  if (score !== '') {
+    queryParams.push(`score:${score}`)
+  }
+  queryParams.push(`sort:"${sort}"`);
+
   return dispatch => {
     dispatch(searchQuestionsStart());
     const params = {
-      query: '{questions(tag:"javascript",limit:3){title}}'
+      query: `{questions(${queryParams.join(',')}){title}}`
     };
+    console.log(params);
     api.get('/', { params })
       .then(response => {
         dispatch(searchQuestionsSuccess(response.data.data))

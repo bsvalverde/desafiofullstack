@@ -21,7 +21,7 @@ const QuestionsSearchBox = (props) => {
       score: scoreInput,
       sort: sortInput
     };
-    args.tags = tagInput
+    args.tag = tagInput
       .split(/[,;]+/g)
       .map(tag => tag.trim())
       .filter(tag => tag !== '');
