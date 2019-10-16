@@ -4,6 +4,6 @@ const QuestionsSearchBox = () => {
   return (
     <p>SearchBox</p>
   );
-}
+};
 
 export default QuestionsSearchBox;

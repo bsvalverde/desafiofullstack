@@ -10,6 +10,6 @@ const QuestionsIndex = () => {
       <QuestionsList />
     </Fragment>
   );
-}
+};
 
 export default QuestionsIndex;
