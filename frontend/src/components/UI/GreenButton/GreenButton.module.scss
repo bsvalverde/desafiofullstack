@@ -9,4 +9,17 @@
   border-radius: 2px;
   box-shadow: 0 2px #5d9c44;
   margin-bottom: 2px;
+
+  &:hover {
+    background: #86d566;
+  }
+
+  &:active {
+    background: #5d9c44;
+    box-shadow: 0 2px #86d566;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
