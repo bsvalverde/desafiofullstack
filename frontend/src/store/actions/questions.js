@@ -38,7 +38,23 @@ export const searchQuestions = (args) => {
   return dispatch => {
     dispatch(searchQuestionsStart());
     const params = {
-      query: `{questions(${queryParams.join(',')}){title}}`
+      query: `{
+        questions(${queryParams.join(',')}) {
+          question_id
+          title
+          link
+          tags
+          score
+          answer_count
+          view_count
+          creation_date
+          owner {
+            display_name
+            link
+            reputation
+          }
+        }
+      }`
     };
     api.get('/', { params })
       .then(response => {
