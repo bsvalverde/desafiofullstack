@@ -4,6 +4,8 @@
   color: dimgray;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1em;
+  align-items: center;
 }
 
 .QuestionSummary + .QuestionSummary {
@@ -14,16 +16,32 @@
   grid-column: 1 / 2;
   grid-row: 1 / 4;
   display: flex;
+  justify-content: space-around;
   align-items: center;
 }
 
 .Counter {
-  width: 100%;
+  text-align: center;
+  padding: 0.4em;
+}
+
+.HighlightedCounter {
+  color: #76c556;
+  border: 1px solid #76c556;
+  border-radius: 4px;
+}
+
+.CounterIdentifier {
+  font-size: 0.8em;
 }
 
 .Title {
   grid-column: 2 / 6;
   grid-row: 1 / 2;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .Tags {
@@ -31,7 +49,23 @@
   grid-row: 2 / 4;
 }
 
+.Tag {
+  background: dimgray;
+  color: white;
+  padding: 0.4em;
+  border-radius: 4px;
+}
+
+.Tag + .Tag {
+  margin-left: 0.4em;
+}
+
 .Info {
   grid-column: 4 / 6;
   grid-row: 2 / 4;
+  text-align: right;
+
+  a {
+    text-decoration: none;
+  }
 }
