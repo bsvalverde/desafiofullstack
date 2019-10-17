@@ -40,7 +40,6 @@ export const searchQuestions = (args) => {
     const params = {
       query: `{questions(${queryParams.join(',')}){title}}`
     };
-    console.log(params);
     api.get('/', { params })
       .then(response => {
         dispatch(searchQuestionsSuccess(response.data.data))
