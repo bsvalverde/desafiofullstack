@@ -1,3 +1,37 @@
 .QuestionSummary {
-  //
+  background: gainsboro;
+  padding: 1em;
+  color: dimgray;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.QuestionSummary + .QuestionSummary {
+  margin-top: 2px;
+}
+
+.Counters {
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
+  display: flex;
+  align-items: center;
+}
+
+.Counter {
+  width: 100%;
+}
+
+.Title {
+  grid-column: 2 / 6;
+  grid-row: 1 / 2;
+}
+
+.Tags {
+  grid-column: 2 / 4;
+  grid-row: 2 / 4;
+}
+
+.Info {
+  grid-column: 4 / 6;
+  grid-row: 2 / 4;
 }
