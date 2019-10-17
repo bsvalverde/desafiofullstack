@@ -9,7 +9,7 @@ module.exports = `
     score: Int!
     last_activity_date: Date!
     creation_date: Date!
-    last_edit_date: Date!
+    last_edit_date: Date
     question_id: ID!
     link: String!
     title: String!
