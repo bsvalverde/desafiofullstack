@@ -1,15 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import classes from './QuestionsList.module.scss';
+
+import QuestionSummary from '../QuestionSummary/QuestionSummary';
+import Spinner from '../../UI/Spinner/Spinner';
+
 const QuestionsList = (props) => {
   if (props.isLoading) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
+
   if (props.error) {
-    return <p>Error</p>;
+    return <p className={classes.Message}>Houve um erro. Por favor, tente novamente.</p>;
   }
-  return props.questions.map((question, index) => {
-    return <p key={index}>{question.title}</p>
+
+  if (props.questions.length === 0) {
+    return <p className={classes.Message}>Nada para mostrar.</p>
+  }
+
+  return props.questions.map((question) => {
+    return <QuestionSummary key={question.question_id} question={question} />
   });
 };
 
