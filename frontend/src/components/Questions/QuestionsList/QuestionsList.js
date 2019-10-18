@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import classes from './QuestionsList.module.scss';
@@ -6,7 +6,7 @@ import classes from './QuestionsList.module.scss';
 import QuestionSummary from '../QuestionSummary/QuestionSummary';
 import Spinner from '../../UI/Spinner/Spinner';
 
-const QuestionsList = (props) => {
+export const QuestionsList = (props) => {
   if (props.isLoading) {
     return <Spinner />;
   }
@@ -19,9 +19,15 @@ const QuestionsList = (props) => {
     return <p className={classes.Message}>Nada para mostrar.</p>
   }
 
-  return props.questions.map((question) => {
-    return <QuestionSummary key={question.question_id} question={question} />
-  });
+  return (
+    <Fragment>
+      {
+        props.questions.map((question) => {
+          return <QuestionSummary key={question.question_id} question={question} />;
+        })
+      }
+    </Fragment>
+  );
 };
 
 const mapStateToProps = (state) => {
