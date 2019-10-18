@@ -16,7 +16,7 @@ const QuestionSummary = (props) => {
           <label>{question.score}</label>
           <br />
           <label className={classes.CounterIdentifier}>
-            {Math.abs(question.score) * question.score === 1 ? 'ponto' : 'pontos'}
+            {Math.abs(question.score) === 1 ? 'ponto' : 'pontos'}
           </label>
         </div>
         <div className={answerCounterClasses.join(' ')}>
