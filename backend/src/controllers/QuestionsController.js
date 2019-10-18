@@ -2,7 +2,8 @@ const stackExchange = require('../services/stackExchange');
 
 class QuestionsController {
   async index(args) {
-    const { tag, limit, score, sort } = args;
+    const { tag, score, sort } = args;
+    const limit = args.limit || 10;
 
     if (!tag) {
       throw new Error('Missing tag');
@@ -11,7 +12,6 @@ class QuestionsController {
     const params = {
       site: 'stackoverflow',
       tagged: tag,
-      limit: limit || 10,
       score: score || -1,
       sort: sort || 'activity'
     };
@@ -21,7 +21,7 @@ class QuestionsController {
       let page = 1;
       let has_more = true;
 
-      while (questions.length < params.limit && has_more) {
+      while (questions.length < limit && has_more) {
         params.page = page;
         const response = await stackExchange.get('/questions', { params });
         let new_questions = response.data.items;
@@ -31,7 +31,7 @@ class QuestionsController {
         page = page + 1;
       }
 
-      questions = questions.slice(0, params.limit);
+      questions = questions.slice(0, limit);
 
       return questions;
     } catch (error) {
