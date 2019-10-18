@@ -22,7 +22,6 @@ O front-end envia requisições à API implementada no back-end conforme os camp
 * __redux__ e dependências - utilizadas para gerenciar um estado global da aplicação.
 
 ### Execução
-As seguintes instruções são para execução do projeto na máquina local. Além delas, o projeto pode ser acessado através [deste link](https://graphql-stack-frontend.herokuapp.com).
 Após o download do projeto, na pasta `desafiofullstack`, execute o seguinte comando:
 
 ### `npm run install_all`
