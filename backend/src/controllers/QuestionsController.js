@@ -35,7 +35,7 @@ class QuestionsController {
 
       return questions;
     } catch (error) {
-      return error;
+      throw new Error(error.response.data.error_message);
     }
   }
 };
