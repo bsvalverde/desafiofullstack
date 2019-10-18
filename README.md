@@ -1,50 +1,40 @@
 # Desafio para a vaga de Desenvolvimento Fullstack
-Se você recebeu esse link, provavelmente você se candidatou para a vaga de Fullstack do time de produto da mobLee. Então, primeiramente, parabéns por ter sido selecionado =)
-
-O objetivo desse desafio é identificar a qualidade do código, entender um pouco da sua lógica de programação e capturar a forma com a qual você organiza essas ideias.
-
-Abaixo seguem todas as instruções para você conseguir executar o desafio.
-
-### Como entregar este desafio
-1. Faça um fork deste repositório no Github (ou qualquer outro gerenciador git da sua preferência).
-2. Edite esse README e mantenha ele atualizado com as informações necessárias para compreender/executar seu projeto e qualquer outra informação relevante para que tenhamos a melhor compreensão possível do seu desafio
-3. Ao final do desafio, responda o e-mail que você recebeu enviando o link do seu repositório.
-
-Obs.: Não fazer um Pull Request para este projeto!
-
-### Com o que devo me preocupar quando for entregar os desafios?
-- Descreva como utilizar e executar a sua solução;
-- Procure deixar seu código bem organizado;
-- Faça commits curtos e com descrição clara do que cada commit faz;
-- Descreva qualquer outra coisa que acha importante sabermos :)
-- Não se limite aos requisitos destes desafios. Sinta-se em casa em adicionar mais detalhes a solução.
-
-Você deve fazer o desafio em Javascript, que é a principal linguagem que estamos trabalhando atualmente, mas se você realmente domina outra linguagem e acredita que seu código ficará melhor utilizando-a, sinta-se à vontade. Se você utilizar os frameworks React ou Vue já sai na frente. 
 
 ## Desafio 1 - API Graphql
-**Objetivo:** criar uma API GraphQL que funcione como uma interface intermediária para a [API de question do StackOverflow](https://api.stackexchange.com/docs/questions).
+A API funciona como um adaptador entre os clientes e a [API do StackOverflow](https://api.stackexchange.com/docs/questions). Ela recebe queries como requisições e responde com os campos desejados dentre os disponíveis. As bibliotecas utilizadas foram para alcançar este funcionamento foram:
+* __axios__ - utilizada para fazer requisições à API do StackOverflow;
+* __cors__ - utilizada para habilitar CROSS ORIGIN RESOURCE SHARING;
+* __express__ - utilizada para roteamento;
+* __express-graphql__ - utilizada para compatibilidade de requisições GraphQL num servidor HTTP;
+* __graphql__ - utilizada para habilitar a criação de schemas, resolvers e interpretar as queries GraphQL.
 
-### Descrição
-Essa chamada de API precisa receber como input 4 parâmetros:
-- O parâmetro 'score' deve filtrar o resultado mostrando apenas as questões com valor maior que o definido por parâmetro. 
-- O parâmetro 'sort' define a propriedade utilizada para ordenar os resultados.  
-- O parâmetro 'limit' define o número de resultados.
-- O parâmetro 'tag' define a tag que você quer buscar
-
-Apenas o parâmetro 'tag' precisa ser obrigatório. Para os outros parâmetros, defina um valor default.
+A API retorna um erro caso não receba nenhuma tag na requisição `questions(tag: String!, limit: Int, score: Int, sort: String)`. Os valores padrão para os demais parâmetros são:
+* limit: 10, trazendo no máximo 10 resultados por padrão;
+* score: -1, trazendo perguntas com nota 0 ou mais;
+* sort: activity, trazendo as perguntas com atividade mais recente primeiro.
 
 ## Desafio 2 - Front-end
-**Objetivo:** Implementar [esta interface](https://drive.google.com/file/d/1TeyJx9meFHKFH33VeqzfNeXcA0V_gsIu/view) e conectar ela ao back-end criado no Desafio 1.
+O front-end envia requisições à API implementada no back-end conforme os campos preenchidos pelo usuário. As implementações foram baseadas [nesta interface](https://drive.google.com/file/d/1TeyJx9meFHKFH33VeqzfNeXcA0V_gsIu/view). Mais de uma tag pode ser enviada, desde que separadas por ',' ou ";". A tag "javascript" sempre é enviada. As bibliotecas utilizadas neste escopo do projeto foram:
+* __react__ e dependências - utilizadas para criar interfaces de usuário dinâmicas;
+* __axios__ - utilizada para fazer requisições à API implementada no Desafio 1;
+* __enzyme__ e dependências - utilizadas para criar arquivos de testes;
+* __node-sass__ - utilizada para compilar arquivos scss;
+* __redux__ e dependências - utilizadas para gerenciar um estado global da aplicação.
 
-### Descrição
-Ao clicar em buscar, você deve consultar a API GraphQL que você implementou e mostrar os resultados abaixo, na mesma página, sem recarregá-la. Sua busca deve sempre trazer resultados para a tag 'Javascript'.
+### Execução
+As seguintes instruções são para execução do projeto na máquina local. Além delas, o projeto pode ser acessado através [deste link](https://graphql-stack-frontend.herokuapp.com).
+Após o download do projeto, na pasta `desafiofullstack`, execute o seguinte comando:
 
-Você pode mostrar os resultados da forma que achar melhor. Capricho na interface e bons feedbacks para o usuário contam pontos para sua avaliação.
+### `npm run install_all`
 
----
-Se tiver dúvidas, não hesite em perguntar!
+Este comando instalará todas as dependências necessárias, tanto para o back-end quanto para o front-end.
 
-Aqui vão alguns links úteis:
-https://api.stackexchange.com/docs/questions
-http://graphql.org/learn/
-https://www.apollographql.com/
+Para inicializar a aplicação, execute:
+
+### `npm start`
+
+Se o navegador não for iniciado automaticamente, a aplicação pode ser encontrada no endereço [http://localhost:3000](http://localhost:3000).
+
+O Desafio 2 possui testes implementados. Para executá-los, navegue até a pasta `frontend` e rode-os, digitando:
+
+### `cd frontend && npm test`
