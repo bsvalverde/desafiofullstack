@@ -1,0 +1,23 @@
+{
+  "name": "desafiofullstack",
+  "version": "1.0.0",
+  "description": "Se você recebeu esse link, provavelmente você se candidatou para a vaga de Fullstack do time de produto da mobLee. Então, primeiramente, parabéns por ter sido selecionado =)",
+  "scripts": {
+    "install_all": "npm install && concurrently \"cd backend && npm install\" \"cd frontend && npm install\"",
+    "start": "concurrently \"cd backend && npm start\" \"cd frontend && npm start\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bsvalverde/desafiofullstack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bsvalverde/desafiofullstack/issues"
+  },
+  "homepage": "https://github.com/bsvalverde/desafiofullstack#readme",
+  "dependencies": {
+    "concurrently": "^5.0.0"
+  }
+}
